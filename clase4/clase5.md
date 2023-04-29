@@ -1,93 +1,144 @@
 ------------------------------------
 |MI PRIMER EJERCICIO CON PostgreSQL|
 ------------------------------------ 
+SELECT Name from student where id_reader=4;
 
-SELECT nombre from estudiante where id_lector=4;
+UPDATE student SET career = "camera operation"
+WHERE id_reader = 2;
 
-UPDATE estudiante SET carrera = "operacion de camaras"
-WHERE id_lector = 2;
+SELECT * FROM student WHERE id_reader=2;
 
-SELECT * FROM estudiante WHERE id_lector=2;
+SELECT * FROM student WHERE career="Medicine";
 
-SELECT * FROM estudiante WHERE carrera="medicina";
+DELETE FROM student
+WHERE id_reader = 3;
 
-DELETE FROM estudiante
-WHERE id_lector = 3;
-
-SELECT * FROM estudiante;
-
-
-
+SELECT * FROM student;
 
 
 **Schema (MySQL v5.7)**
+Results
+**Schema (MySQL v5.7)**
 
-    create TABLE estudiante(
-      id_lector INT PRIMARY KEY,
-      nombre VARCHAR(100) NOT NULL,
-      carrera VARCHAR(100) NOT NULL
+    CREATE TABLE student(
+      id_reader INT PRIMARY KEY,
+      CC INT ,
+      Name VARCHAR(100) NOT NULL,
+      career VARCHAR(100) NOT NULL
     );
     
-    INSERT INTO estudiante(id_lector,nombre,carrera)
-    VALUES(1,"camilo torres","sicologia"),(2,"karen muñoz","derecho"),(3,"cristian moreno","medicina"),(4,"catalina Gomez","veterinaria"),(5,"melissa calderón","medicina");
+    INSERT INTO student (id_reader,CC,Name,career)
+    VALUES
+    (1,13245665,"Camilo Torres","Psychology"),(2,13249665,"Karen Muñoz","Right"),(3,13249698,"Cristian Moreno","Medicine"),(4,176549665,"Catalina Gomez","Veterinary"),(5,14389665,"Katherin calderón","Medicine"),
+    (6,14340965,"Luisa Rodriguez","Fotografy"),
+    (7,1449665,"Carlos Mejía","Right"),
+    (8,1487665,"Samantha Martinez","Medicine"),
+    (9,12149665,"Viviana Calderón","Psycology"),
+    (10,14344065,"Sandra Calderón","Veterinary");
+    
 
 ---
 
 **Query #1**
+(esta consulta me va a traer el nombre del estudiante con 
+el id_reader 4).
 
-    SELECT nombre from estudiante where id_lector=4;
+    SELECT Name from student where id_reader=4;
 
-| nombre         |
+| Name           |
 | -------------- |
-| catalina Gomez |
+| Catalina Gomez |
 
 ---
 **Query #2**
+(esta consulta me va a actualizar la carrera de la persona con 
+el id_reader 2).
 
-    UPDATE estudiante SET carrera = "operacion de camaras"
-    WHERE id_lector = 2;
+
+    UPDATE student SET career = "camera operation"
+    WHERE id_reader = 2;
 
 There are no results to be displayed.
 
 ---
 **Query #3**
+(esta consulta me va a traer el estudiante con el id_reader 2).
 
-    SELECT * FROM estudiante WHERE id_lector=2;
 
-| id_lector | nombre      | carrera              |
-| --------- | ----------- | -------------------- |
-| 2         | karen muñoz | operacion de camaras |
+    SELECT * FROM student WHERE id_reader=2;
+
+| id_reader | CC       | Name        | career           |
+| --------- | -------- | ----------- | ---------------- |
+| 2         | 13249665 | Karen Muñoz | camera operation |
 
 ---
 **Query #4**
+(esta consulta me va a traer todos los estudiantes que en su carrera esté medicina).
 
-    SELECT * FROM estudiante WHERE carrera="medicina";
+    SELECT * FROM student WHERE career="Medicine";
 
-| id_lector | nombre           | carrera  |
-| --------- | ---------------- | -------- |
-| 3         | cristian moreno  | medicina |
-| 5         | melissa calderón | medicina |
+| id_reader | CC       | Name              | career   |
+| --------- | -------- | ----------------- | -------- |
+| 3         | 13249698 | Cristian Moreno   | Medicine |
+| 5         | 14389665 | Katherin calderón | Medicine |
+| 8         | 1487665  | Samantha Martinez | Medicine |
 
 ---
 **Query #5**
+(esta consulta me va a eliminar el estudiante con el id_reader 3).
 
-    DELETE FROM estudiante
-    WHERE id_lector = 3;
+    DELETE FROM student
+    WHERE id_reader = 3;
 
 There are no results to be displayed.
 
 ---
 **Query #6**
+(esta consulta me va a traer todos los estudiantes).
 
-    SELECT * FROM estudiante;
+    SELECT * FROM student;
 
-| id_lector | nombre           | carrera              |
-| --------- | ---------------- | -------------------- |
-| 1         | camilo torres    | sicologia            |
-| 2         | karen muñoz      | operacion de camaras |
-| 4         | catalina Gomez   | veterinaria          |
-| 5         | melissa calderón | medicina             |
+| id_reader | CC        | Name              | career           |
+| --------- | --------- | ----------------- | ---------------- |
+| 1         | 13245665  | Camilo Torres     | Psychology       |
+| 2         | 13249665  | Karen Muñoz       | camera operation |
+| 4         | 176549665 | Catalina Gomez    | Veterinary       |
+| 5         | 14389665  | Katherin calderón | Medicine         |
+| 6         | 14340965  | Luisa Rodriguez   | Fotografy        |
+| 7         | 1449665   | Carlos Mejía      | Right            |
+| 8         | 1487665   | Samantha Martinez | Medicine         |
+| 9         | 12149665  | Viviana Calderón  | Psycology        |
+| 10        | 14344065  | Sandra Calderón   | Veterinary       |
 
 ---
 
-[View on DB Fiddle](https://www.db-fiddle.com/f/fKtUp5fisPuwgvBkgG2rod/2)
+[View on DB Fiddle](https://www.db-fiddle.com/f/fKtUp5fisPuwgvBkgG2rod/9)
+Copy as Markdown
+Query #1 Execution time: 0ms
+Name
+Catalina Gomez
+Query #2 Execution time: 0ms
+There are no results to be displayed.
+Query #3 Execution time: 1ms
+id_reader	CC	Name	career
+2	13249665	Karen Muñoz	camera operation
+Query #4 Execution time: 0ms
+id_reader	CC	Name	career
+3	13249698	Cristian Moreno	Medicine
+5	14389665	Katherin calderón	Medicine
+8	1487665	Samantha Martinez	Medicine
+Query #5 Execution time: 0ms
+There are no results to be displayed.
+Query #6 Execution time: 0ms
+id_reader	CC	Name	career
+1	13245665	Camilo Torres	Psychology
+2	13249665	Karen Muñoz	camera operation
+4	176549665	Catalina Gomez	Veterinary
+5	14389665	Katherin calderón	Medicine
+6	14340965	Luisa Rodriguez	Fotografy
+7	1449665	Carlos Mejía	Right
+8	1487665	Samantha Martinez	Medicine
+9	12149665	Viviana Calderón	Psycology
+10	14344065	Sandra Calderón	Veterinary
+
+    
