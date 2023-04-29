@@ -1,3 +1,4 @@
+//configuración express
 const express = require("express");
 const fs = require('fs');
 const path = require('path');
@@ -47,7 +48,7 @@ app.delete("/api/v1/products/:id", async (req, res) => {
         const id = req.params.id
         const archivo = await fs.promises.readFile(filepath, "utf-8")
         const productos = JSON.parse(archivo)
-        const productodelete = productos.filter(producto => producto.id !== id)
+        const productodelete = productos.filter(producto => producto.id != id)
         fs.promises.writeFile(filepath, JSON.stringify(productodelete))
         res.status(200).json({ success: "producto eliminado exitosamente", id })
 

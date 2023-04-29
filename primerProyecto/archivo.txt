@@ -1,3 +1,0 @@
-[{"id":"669f6b3b-e608-4f27-b904-b02941dcd8ad",
-"name":"Product 1","description":"Description Product 1","price":100,"quantity":10,"category":"Category 1"},
-{"id":"1","name":"deliciusk ","description":"postres","price":6000,"quantity":30,"category":"fresa"}]

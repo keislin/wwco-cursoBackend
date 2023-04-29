@@ -5,7 +5,7 @@ const { default: mongoose } = require("mongoose");
 PORT = process.env.PORT || 3000;
 
 const app = express();
-console.log("mongo", process.env.MONGODB_URL);
+app.use(express.json())
 app.use("/", require("./routes"))
 
 
